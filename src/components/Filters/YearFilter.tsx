@@ -22,14 +22,14 @@ export const YearFilter: React.FC<YearFilterProps> = ({ selectedYear, onChange }
     <div>
       <Label className="block mb-2">Release Year</Label>
       <Select
-        value={selectedYear?.toString() || ''}
-        onValueChange={(value) => onChange(value ? parseInt(value) : undefined)}
+        value={selectedYear?.toString() || 'any'}
+        onValueChange={(value) => onChange(value !== 'any' ? parseInt(value) : undefined)}
       >
         <SelectTrigger>
           <SelectValue placeholder="Select year" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="">Any year</SelectItem>
+          <SelectItem value="any">Any year</SelectItem>
           {years.map(year => (
             <SelectItem key={year} value={year.toString()}>
               {year}

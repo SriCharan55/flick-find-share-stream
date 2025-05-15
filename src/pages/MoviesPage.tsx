@@ -15,6 +15,11 @@ const MoviesPage = () => {
     setFilteredMovies(filtered);
   };
   
+  // Initialize with all movies when component mounts
+  useEffect(() => {
+    setFilteredMovies(movies);
+  }, [movies]);
+  
   return (
     <Layout>
       <FilterBar 
