@@ -32,6 +32,9 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     return url;
   };
 
+  // Use a default movie-related background if no thumbnail is provided
+  const thumbnailImage = thumbnailUrl || 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21';
+
   return (
     <>
       <div 
@@ -39,7 +42,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         onClick={() => setIsPlaying(true)}
       >
         <img 
-          src={thumbnailUrl || 'https://placehold.co/800x450?text=Video+Thumbnail'} 
+          src={thumbnailImage} 
           alt={title}
           className="w-full h-full object-cover transition-transform group-hover:scale-105"
         />

@@ -47,6 +47,9 @@ const MovieDetail = () => {
     );
   }
 
+  // Ensure we always have a backdrop image
+  const backdropImage = movie.backdropUrl || movie.posterUrl || 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5';
+
   const handleAddToWatchlist = () => {
     if (!user) {
       toast('Please login to add movies to your watchlist');
@@ -62,7 +65,7 @@ const MovieDetail = () => {
       <div 
         className="relative w-full h-[60vh] bg-cover bg-center"
         style={{ 
-          backgroundImage: `url(${movie.backdropUrl || movie.posterUrl})`,
+          backgroundImage: `url(${backdropImage})`,
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
@@ -100,7 +103,7 @@ const MovieDetail = () => {
           {/* Left Column - Poster and Streaming */}
           <div className="md:col-span-1">
             <img 
-              src={movie.posterUrl} 
+              src={movie.posterUrl || 'https://placehold.co/300x450?text=Movie+Poster'} 
               alt={movie.title}
               className="w-full rounded-lg shadow-lg mb-6"
             />
@@ -121,16 +124,14 @@ const MovieDetail = () => {
                 <h2 className="text-2xl font-bold mb-4">Synopsis</h2>
                 <p className="text-base text-muted-foreground mb-8">{movie.description}</p>
                 
-                {movie.trailerUrl && (
-                  <div className="mb-8">
-                    <h2 className="text-2xl font-bold mb-4">Trailer</h2>
-                    <VideoPlayer 
-                      videoUrl={movie.trailerUrl} 
-                      thumbnailUrl={movie.backdropUrl} 
-                      title={`${movie.title} Trailer`}
-                    />
-                  </div>
-                )}
+                <div className="mb-8">
+                  <h2 className="text-2xl font-bold mb-4">Trailer</h2>
+                  <VideoPlayer 
+                    videoUrl={movie.trailerUrl || 'https://www.youtube.com/watch?v=QWBKEmWWL38'} 
+                    thumbnailUrl={movie.backdropUrl} 
+                    title={`${movie.title} Trailer`}
+                  />
+                </div>
               </TabsContent>
               
               <TabsContent value="cast" className="pt-6">

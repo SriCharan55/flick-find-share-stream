@@ -187,7 +187,7 @@ export const mockMovies: Movie[] = [
     title: 'Avatar',
     description: 'A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.',
     posterUrl: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmMjcxZjQ3ODZiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_.jpg',
-    backdropUrl: 'https://wallpapercave.com/wp/wp3986024.jpg',
+    backdropUrl: 'https://wallpaperaccess.com/full/635947.jpg',
     rating: 7.8,
     releaseYear: 2009,
     genres: ['Action', 'Adventure', 'Fantasy'],
