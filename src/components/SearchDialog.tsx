@@ -7,11 +7,13 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useMovies } from '@/contexts/MovieContext';
 import { Movie } from '@/types';
+import { VoiceSearch } from './VoiceSearch';
 
 interface SearchDialogProps {
   open: boolean;
@@ -48,13 +50,20 @@ export function SearchDialog({ open, onOpenChange }: SearchDialogProps) {
     setResults([]);
   };
 
+  const handleVoiceResult = (transcript: string) => {
+    setQuery(transcript);
+  };
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[550px]">
         <DialogHeader>
           <DialogTitle>Search movies</DialogTitle>
+          <DialogDescription>
+            Type or use voice search to find movies by title or genre
+          </DialogDescription>
         </DialogHeader>
-        <div className="relative">
+        <div className="relative flex items-center">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Search for movies, genres..."
@@ -63,17 +72,20 @@ export function SearchDialog({ open, onOpenChange }: SearchDialogProps) {
             onChange={(e) => setQuery(e.target.value)}
             autoFocus
           />
-          {query && (
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute right-1 top-1/2 -translate-y-1/2 h-8 w-8"
-              onClick={handleClear}
-            >
-              <X className="h-4 w-4" />
-              <span className="sr-only">Clear</span>
-            </Button>
-          )}
+          <div className="absolute right-1 top-1/2 -translate-y-1/2 flex items-center">
+            {query && (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8"
+                onClick={handleClear}
+              >
+                <X className="h-4 w-4" />
+                <span className="sr-only">Clear</span>
+              </Button>
+            )}
+            <VoiceSearch onResult={handleVoiceResult} />
+          </div>
         </div>
 
         {isLoading ? (
