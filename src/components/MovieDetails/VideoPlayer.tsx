@@ -18,22 +18,35 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [isPlaying, setIsPlaying] = useState(false);
 
   const getEmbedUrl = (url: string): string => {
-    // Convert YouTube URL to embed URL
+    // Convert YouTube URL to embed URL with autoplay and no related videos
     if (url.includes('youtube.com/watch?v=')) {
       const videoId = url.split('v=')[1].split('&')[0];
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
     }
     
     if (url.includes('youtu.be/')) {
       const videoId = url.split('youtu.be/')[1];
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
     }
     
     return url;
   };
 
-  // Use a high-quality movie-related background if no thumbnail is provided
-  const thumbnailImage = thumbnailUrl || 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21';
+  // Get YouTube video ID for thumbnail
+  const getYouTubeThumbnail = (url: string): string | null => {
+    let videoId = null;
+    if (url.includes('youtube.com/watch?v=')) {
+      videoId = url.split('v=')[1].split('&')[0];
+    } else if (url.includes('youtu.be/')) {
+      videoId = url.split('youtu.be/')[1];
+    }
+    
+    return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null;
+  };
+
+  // First try to use YouTube thumbnail, then provided thumbnail, then fallback
+  const youTubeThumbnail = getYouTubeThumbnail(videoUrl);
+  const thumbnailImage = youTubeThumbnail || thumbnailUrl || 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21';
 
   return (
     <>
@@ -48,7 +61,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/30 transition-colors">
           <Button 
-            className="rounded-full h-16 w-16 flex items-center justify-center bg-primary hover:bg-primary/90"
+            className="rounded-full h-16 w-16 flex items-center justify-center bg-red-600 hover:bg-red-700"
             onClick={() => setIsPlaying(true)}
           >
             <Play className="h-8 w-8 fill-current" />
@@ -61,7 +74,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         <DialogContent className="sm:max-w-[800px] p-0 bg-transparent border-none">
           <div className="relative aspect-video w-full">
             <iframe
-              src={getEmbedUrl(videoUrl)}
+              src={isPlaying ? getEmbedUrl(videoUrl) : ''}
               title={title}
               className="w-full h-full rounded-lg"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
