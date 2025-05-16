@@ -35,15 +35,24 @@ const Home = () => {
     setFilteredMovies(filtered);
   };
   
-  // Create genre-specific collections from filtered movies - limit to 5 per category
-  const actionMovies = filteredMovies.filter(movie => movie.genres.includes('Action')).slice(0, 5);
-  const comedyMovies = filteredMovies.filter(movie => movie.genres.includes('Comedy')).slice(0, 5);
-  const sciFiMovies = filteredMovies.filter(movie => movie.genres.includes('Sci-Fi')).slice(0, 5);
-  const adventureMovies = filteredMovies.filter(movie => movie.genres.includes('Adventure')).slice(0, 5);
-  const dramaMovies = filteredMovies.filter(movie => movie.genres.includes('Drama')).slice(0, 5);
-  const thrillerMovies = filteredMovies.filter(movie => movie.genres.includes('Thriller')).slice(0, 5);
-  const crimeMovies = filteredMovies.filter(movie => movie.genres.includes('Crime')).slice(0, 5);
-  const animationMovies = filteredMovies.filter(movie => movie.genres.includes('Animation')).slice(0, 5);
+  // Get exactly 5 unique movies per category
+  const getUniqueMoviesByGenre = (genre: string, count: number = 5): Movie[] => {
+    // Get movies with the specified genre, sorted by rating
+    const genreMovies = filteredMovies
+      .filter(movie => movie.genres.includes(genre))
+      .sort((a, b) => b.rating - a.rating);
+
+    return genreMovies.slice(0, count);
+  };
+  
+  const actionMovies = getUniqueMoviesByGenre('Action');
+  const comedyMovies = getUniqueMoviesByGenre('Comedy');
+  const sciFiMovies = getUniqueMoviesByGenre('Sci-Fi');
+  const adventureMovies = getUniqueMoviesByGenre('Adventure');
+  const dramaMovies = getUniqueMoviesByGenre('Drama');
+  const thrillerMovies = getUniqueMoviesByGenre('Thriller');
+  const crimeMovies = getUniqueMoviesByGenre('Crime');
+  const animationMovies = getUniqueMoviesByGenre('Animation');
   
   return (
     <Layout>
@@ -74,14 +83,14 @@ const Home = () => {
       
       <div className="container px-4 py-6">
         <div className="space-y-12">
-          <MovieGrid title="Action Movies" movies={actionMovies} />
-          <MovieGrid title="Comedy Movies" movies={comedyMovies} />
-          <MovieGrid title="Science Fiction" movies={sciFiMovies} />
-          <MovieGrid title="Adventure Movies" movies={adventureMovies} />
-          <MovieGrid title="Drama" movies={dramaMovies} />
-          <MovieGrid title="Thriller Movies" movies={thrillerMovies} />
-          <MovieGrid title="Crime Movies" movies={crimeMovies} />
-          <MovieGrid title="Animation Movies" movies={animationMovies} />
+          {actionMovies.length > 0 && <MovieGrid title="Action Movies" movies={actionMovies} />}
+          {comedyMovies.length > 0 && <MovieGrid title="Comedy Movies" movies={comedyMovies} />}
+          {sciFiMovies.length > 0 && <MovieGrid title="Science Fiction" movies={sciFiMovies} />}
+          {adventureMovies.length > 0 && <MovieGrid title="Adventure Movies" movies={adventureMovies} />}
+          {dramaMovies.length > 0 && <MovieGrid title="Drama" movies={dramaMovies} />}
+          {thrillerMovies.length > 0 && <MovieGrid title="Thriller Movies" movies={thrillerMovies} />}
+          {crimeMovies.length > 0 && <MovieGrid title="Crime Movies" movies={crimeMovies} />}
+          {animationMovies.length > 0 && <MovieGrid title="Animation Movies" movies={animationMovies} />}
         </div>
       </div>
     </Layout>

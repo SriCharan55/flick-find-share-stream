@@ -22,13 +22,15 @@ const MoviesPage = () => {
   
   return (
     <Layout>
-      <FilterBar 
-        onFilterChange={handleFilterChange}
-        totalResults={filteredMovies.length}
-      />
-      
-      <div className="container px-4 py-8">
-        <MovieGrid movies={filteredMovies} />
+      <div className="container px-4 py-6">
+        <FilterBar 
+          onFilterChange={handleFilterChange}
+          totalResults={filteredMovies.length}
+        />
+        
+        <div className="mt-6">
+          <MovieGrid movies={filteredMovies} />
+        </div>
       </div>
     </Layout>
   );
