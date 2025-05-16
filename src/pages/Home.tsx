@@ -35,18 +35,19 @@ const Home = () => {
     setFilteredMovies(filtered);
   };
   
-  // Create genre-specific collections from filtered movies
-  const actionMovies = filteredMovies.filter(movie => movie.genres.includes('Action')).slice(0, 12);
-  const comedyMovies = filteredMovies.filter(movie => movie.genres.includes('Comedy')).slice(0, 12);
-  const sciFiMovies = filteredMovies.filter(movie => movie.genres.includes('Sci-Fi')).slice(0, 12);
-  const adventureMovies = filteredMovies.filter(movie => movie.genres.includes('Adventure')).slice(0, 12);
-  const dramaMovies = filteredMovies.filter(movie => movie.genres.includes('Drama')).slice(0, 12);
+  // Create genre-specific collections from filtered movies - limit to 5 per category
+  const actionMovies = filteredMovies.filter(movie => movie.genres.includes('Action')).slice(0, 5);
+  const comedyMovies = filteredMovies.filter(movie => movie.genres.includes('Comedy')).slice(0, 5);
+  const sciFiMovies = filteredMovies.filter(movie => movie.genres.includes('Sci-Fi')).slice(0, 5);
+  const adventureMovies = filteredMovies.filter(movie => movie.genres.includes('Adventure')).slice(0, 5);
+  const dramaMovies = filteredMovies.filter(movie => movie.genres.includes('Drama')).slice(0, 5);
+  const thrillerMovies = filteredMovies.filter(movie => movie.genres.includes('Thriller')).slice(0, 5);
+  const crimeMovies = filteredMovies.filter(movie => movie.genres.includes('Crime')).slice(0, 5);
+  const animationMovies = filteredMovies.filter(movie => movie.genres.includes('Animation')).slice(0, 5);
   
   return (
     <Layout>
       {heroMovie && <HeroSection movie={heroMovie} />}
-      
-      <FeaturedSlider title="Featured Movies" movies={featuredMovies} />
       
       <div className="container px-4 py-6">
         <div className="flex items-center justify-between mb-6">
@@ -67,13 +68,20 @@ const Home = () => {
             />
           </div>
         )}
-        
+      </div>
+      
+      <FeaturedSlider title="Featured Movies" movies={featuredMovies} />
+      
+      <div className="container px-4 py-6">
         <div className="space-y-12">
           <MovieGrid title="Action Movies" movies={actionMovies} />
           <MovieGrid title="Comedy Movies" movies={comedyMovies} />
           <MovieGrid title="Science Fiction" movies={sciFiMovies} />
           <MovieGrid title="Adventure Movies" movies={adventureMovies} />
           <MovieGrid title="Drama" movies={dramaMovies} />
+          <MovieGrid title="Thriller Movies" movies={thrillerMovies} />
+          <MovieGrid title="Crime Movies" movies={crimeMovies} />
+          <MovieGrid title="Animation Movies" movies={animationMovies} />
         </div>
       </div>
     </Layout>

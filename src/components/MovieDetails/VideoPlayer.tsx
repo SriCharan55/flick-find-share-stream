@@ -32,7 +32,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     return url;
   };
 
-  // Use a default movie-related background if no thumbnail is provided
+  // Use a high-quality movie-related background if no thumbnail is provided
   const thumbnailImage = thumbnailUrl || 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21';
 
   return (
