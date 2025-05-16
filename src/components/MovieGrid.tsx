@@ -21,13 +21,11 @@ export const MovieGrid: React.FC<MovieGridProps> = ({ movies, title }) => {
   return (
     <section className="section-padding">
       {title && (
-        <h2 className="category-title mb-4">{title}</h2>
+        <h2 className="category-title">{title}</h2>
       )}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         {movies.map(movie => (
-          <div key={movie.id} className="flex">
-            <MovieCard key={movie.id} movie={movie} className="w-full" />
-          </div>
+          <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>
     </section>

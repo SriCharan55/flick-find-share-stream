@@ -58,7 +58,7 @@ const Home = () => {
     <Layout>
       {heroMovie && <HeroSection movie={heroMovie} />}
       
-      <div className="container mx-auto px-4 py-6">
+      <div className="container px-4 py-6">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold">Movie Collection</h2>
           <button 
@@ -81,7 +81,7 @@ const Home = () => {
       
       <FeaturedSlider title="Featured Movies" movies={featuredMovies} />
       
-      <div className="container mx-auto px-4">
+      <div className="container px-4 py-6">
         <div className="space-y-12">
           {actionMovies.length > 0 && <MovieGrid title="Action Movies" movies={actionMovies} />}
           {comedyMovies.length > 0 && <MovieGrid title="Comedy Movies" movies={comedyMovies} />}
