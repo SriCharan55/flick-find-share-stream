@@ -73,8 +73,8 @@ export const FeaturedSlider: React.FC<FeaturedSliderProps> = ({ title, movies })
         onScroll={checkScrollButtons}
       >
         {movies.map(movie => (
-          <div key={movie.id} className="min-w-[180px] w-[180px] md:min-w-[200px] md:w-[200px] lg:min-w-[220px] lg:w-[220px] snap-start">
-            <MovieCard movie={movie} />
+          <div key={movie.id} className="min-w-[200px] w-[200px] md:min-w-[220px] md:w-[220px] lg:min-w-[240px] lg:w-[240px] snap-start flex">
+            <MovieCard movie={movie} className="w-full" />
           </div>
         ))}
       </div>
