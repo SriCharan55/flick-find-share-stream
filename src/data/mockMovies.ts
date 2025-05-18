@@ -1,3 +1,4 @@
+
 import { Movie } from '@/types';
 
 export const mockMovies: Movie[] = [
@@ -50,7 +51,7 @@ export const mockMovies: Movie[] = [
     id: '4',
     title: 'The Matrix',
     description: 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.',
-    posterUrl: 'https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg',
+    posterUrl: 'https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDliYWRiYmIzOTczXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg',
     backdropUrl: 'https://wallpaperaccess.com/full/1631875.jpg',
     rating: 8.7,
     releaseYear: 1999,
@@ -336,7 +337,7 @@ export const mockMovies: Movie[] = [
     id: '23',
     title: 'Parasite',
     description: 'Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.',
-    posterUrl: 'https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDctZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg',
+    posterUrl: 'https://m.media-amazon.com/images/M/MV5BOGRiM2UwOWItMTYwZS00OTUzLWJiODgtYzU2NDczN2YzZTgyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg',
     backdropUrl: 'https://wallpapercave.com/wp/wp5294886.jpg',
     rating: 8.5,
     releaseYear: 2019,
