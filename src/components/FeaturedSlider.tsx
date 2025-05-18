@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Movie } from '@/types';
 import { MovieCard } from './MovieCard';
 import { cn } from '@/lib/utils';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 interface FeaturedSliderProps {
   title: string;
@@ -12,71 +13,29 @@ interface FeaturedSliderProps {
 }
 
 export const FeaturedSlider: React.FC<FeaturedSliderProps> = ({ title, movies }) => {
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
-
-  const checkScrollButtons = () => {
-    if (sliderRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 10);
-    }
-  };
-
-  useEffect(() => {
-    checkScrollButtons();
-    window.addEventListener('resize', checkScrollButtons);
-    return () => window.removeEventListener('resize', checkScrollButtons);
-  }, []);
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (sliderRef.current) {
-      const { clientWidth } = sliderRef.current;
-      const scrollAmount = direction === 'left' ? -clientWidth / 2 : clientWidth / 2;
-      sliderRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      setTimeout(checkScrollButtons, 400);
-    }
-  };
-
+  // We'll use embla carousel for better alignment and responsiveness
   return (
-    <section className="section-padding relative">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-2xl font-bold sm:text-3xl">{title}</h2>
-        <div className="flex gap-2">
-          <Button
-            variant="outline"
-            size="icon"
-            className={cn("rounded-full", !canScrollLeft && "opacity-50 cursor-not-allowed")}
-            onClick={() => scroll('left')}
-            disabled={!canScrollLeft}
-          >
-            <ChevronLeft className="h-6 w-6" />
-            <span className="sr-only">Scroll left</span>
-          </Button>
-          <Button
-            variant="outline"
-            size="icon"
-            className={cn("rounded-full", !canScrollRight && "opacity-50 cursor-not-allowed")}
-            onClick={() => scroll('right')}
-            disabled={!canScrollRight}
-          >
-            <ChevronRight className="h-6 w-6" />
-            <span className="sr-only">Scroll right</span>
-          </Button>
+    <section className="py-8 px-4 sm:py-12 md:px-8">
+      <div className="container mx-auto">
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl font-bold sm:text-3xl">{title}</h2>
         </div>
-      </div>
-      
-      <div
-        ref={sliderRef}
-        className="flex gap-4 overflow-x-auto pb-6 scrollbar-none snap-x"
-        onScroll={checkScrollButtons}
-      >
-        {movies.map(movie => (
-          <div key={movie.id} className="min-w-[180px] w-[180px] md:min-w-[200px] md:w-[200px] lg:min-w-[220px] lg:w-[220px] snap-start">
-            <MovieCard movie={movie} />
+        
+        <Carousel className="w-full">
+          <CarouselContent className="-ml-2 md:-ml-4">
+            {movies.map(movie => (
+              <CarouselItem key={movie.id} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6">
+                <div className="h-full">
+                  <MovieCard movie={movie} />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="hidden sm:flex justify-end gap-2 mt-4">
+            <CarouselPrevious className="relative inset-0 translate-y-0 left-0" />
+            <CarouselNext className="relative inset-0 translate-y-0 right-0" />
           </div>
-        ))}
+        </Carousel>
       </div>
     </section>
   );

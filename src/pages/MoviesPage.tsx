@@ -22,7 +22,7 @@ const MoviesPage = () => {
   
   return (
     <Layout>
-      <div className="container px-4 py-6">
+      <div className="container mx-auto py-6 px-4">
         <FilterBar 
           onFilterChange={handleFilterChange}
           totalResults={filteredMovies.length}

@@ -58,7 +58,7 @@ const Home = () => {
     <Layout>
       {heroMovie && <HeroSection movie={heroMovie} />}
       
-      <div className="container px-4 py-6">
+      <div className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold">Movie Collection</h2>
           <button 
@@ -81,17 +81,15 @@ const Home = () => {
       
       <FeaturedSlider title="Featured Movies" movies={featuredMovies} />
       
-      <div className="container px-4 py-6">
-        <div className="space-y-12">
-          {actionMovies.length > 0 && <MovieGrid title="Action Movies" movies={actionMovies} />}
-          {comedyMovies.length > 0 && <MovieGrid title="Comedy Movies" movies={comedyMovies} />}
-          {sciFiMovies.length > 0 && <MovieGrid title="Science Fiction" movies={sciFiMovies} />}
-          {adventureMovies.length > 0 && <MovieGrid title="Adventure Movies" movies={adventureMovies} />}
-          {dramaMovies.length > 0 && <MovieGrid title="Drama" movies={dramaMovies} />}
-          {thrillerMovies.length > 0 && <MovieGrid title="Thriller Movies" movies={thrillerMovies} />}
-          {crimeMovies.length > 0 && <MovieGrid title="Crime Movies" movies={crimeMovies} />}
-          {animationMovies.length > 0 && <MovieGrid title="Animation Movies" movies={animationMovies} />}
-        </div>
+      <div className="space-y-8">
+        {actionMovies.length > 0 && <MovieGrid title="Action Movies" movies={actionMovies} />}
+        {comedyMovies.length > 0 && <MovieGrid title="Comedy Movies" movies={comedyMovies} />}
+        {sciFiMovies.length > 0 && <MovieGrid title="Science Fiction" movies={sciFiMovies} />}
+        {adventureMovies.length > 0 && <MovieGrid title="Adventure Movies" movies={adventureMovies} />}
+        {dramaMovies.length > 0 && <MovieGrid title="Drama" movies={dramaMovies} />}
+        {thrillerMovies.length > 0 && <MovieGrid title="Thriller Movies" movies={thrillerMovies} />}
+        {crimeMovies.length > 0 && <MovieGrid title="Crime Movies" movies={crimeMovies} />}
+        {animationMovies.length > 0 && <MovieGrid title="Animation Movies" movies={animationMovies} />}
       </div>
     </Layout>
   );

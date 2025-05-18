@@ -80,7 +80,7 @@
 
 @layer components {
   .movie-card {
-    @apply relative overflow-hidden rounded-lg bg-card transition-all duration-300 hover:scale-[1.02] hover:shadow-xl;
+    @apply relative overflow-hidden rounded-lg bg-card transition-all duration-300 hover:scale-[1.02] hover:shadow-xl h-full flex flex-col;
   }
 
   .movie-card-image {
@@ -88,7 +88,7 @@
   }
 
   .movie-card-content {
-    @apply p-4;
+    @apply p-4 flex-grow;
   }
 
   .category-title {
@@ -109,5 +109,15 @@
   
   .text-shadow {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Custom scrollbar for WebKit browsers */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
