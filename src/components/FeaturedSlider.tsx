@@ -1,10 +1,7 @@
 
-import React, { useRef, useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React from 'react';
 import { Movie } from '@/types';
 import { MovieCard } from './MovieCard';
-import { cn } from '@/lib/utils';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 interface FeaturedSliderProps {
@@ -13,7 +10,6 @@ interface FeaturedSliderProps {
 }
 
 export const FeaturedSlider: React.FC<FeaturedSliderProps> = ({ title, movies }) => {
-  // We'll use embla carousel for better alignment and responsiveness
   return (
     <section className="py-8 px-4 sm:py-12 md:px-8">
       <div className="container mx-auto">
@@ -31,7 +27,7 @@ export const FeaturedSlider: React.FC<FeaturedSliderProps> = ({ title, movies })
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="hidden sm:flex justify-end gap-2 mt-4">
+          <div className="flex justify-end gap-2 mt-4">
             <CarouselPrevious className="relative inset-0 translate-y-0 left-0" />
             <CarouselNext className="relative inset-0 translate-y-0 right-0" />
           </div>
@@ -39,4 +35,4 @@ export const FeaturedSlider: React.FC<FeaturedSliderProps> = ({ title, movies })
       </div>
     </section>
   );
-};
+}
