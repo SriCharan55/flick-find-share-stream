@@ -39,15 +39,13 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie, className }) => {
   return (
     <div className={cn('movie-card group h-full flex flex-col', className)}>
       <Link to={`/movie/${movie.id}`} className="block relative flex-grow">
-        <div className="aspect-[2/3] w-full relative">
-          <img
-            src={movie.posterUrl}
-            alt={movie.title}
-            className="absolute inset-0 w-full h-full object-cover rounded-t-lg"
-            loading="lazy"
-            onError={handleImageError}
-          />
-        </div>
+        <img
+          src={movie.posterUrl}
+          alt={movie.title}
+          className="movie-card-image rounded-t-lg w-full h-full object-cover"
+          loading="lazy"
+          onError={handleImageError}
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
           <div className="text-white">
             <h3 className="font-semibold text-lg truncate">{movie.title}</h3>
@@ -71,7 +69,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie, className }) => {
           </div>
         </div>
       </Link>
-      <div className="movie-card-content py-2 px-2">
+      <div className="movie-card-content py-3">
         <h3 className="font-medium text-base truncate">{movie.title}</h3>
         <div className="flex items-center mt-1 text-muted-foreground">
           <Star className="h-4 w-4 fill-rating stroke-rating mr-1" />
