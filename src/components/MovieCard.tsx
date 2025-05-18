@@ -31,14 +31,20 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie, className }) => {
     toast.success('Added to watchlist!');
   };
 
+  // Add error handling for image loading
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    e.currentTarget.src = 'https://via.placeholder.com/300x450?text=Movie+Poster';
+  };
+
   return (
-    <div className={cn('movie-card group', className)}>
-      <Link to={`/movie/${movie.id}`} className="block relative">
+    <div className={cn('movie-card group h-full flex flex-col', className)}>
+      <Link to={`/movie/${movie.id}`} className="block relative flex-grow">
         <img
           src={movie.posterUrl}
           alt={movie.title}
-          className="movie-card-image rounded-t-lg"
+          className="movie-card-image rounded-t-lg w-full h-full object-cover"
           loading="lazy"
+          onError={handleImageError}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
           <div className="text-white">
@@ -63,7 +69,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie, className }) => {
           </div>
         </div>
       </Link>
-      <div className="movie-card-content">
+      <div className="movie-card-content py-3">
         <h3 className="font-medium text-base truncate">{movie.title}</h3>
         <div className="flex items-center mt-1 text-muted-foreground">
           <Star className="h-4 w-4 fill-rating stroke-rating mr-1" />
