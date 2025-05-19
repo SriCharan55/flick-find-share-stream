@@ -1,3 +1,4 @@
+
 import { Movie } from '@/types';
 
 export const mockMovies: Movie[] = [
