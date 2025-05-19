@@ -1,4 +1,3 @@
-
 import { Movie } from '@/types';
 
 export const mockMovies: Movie[] = [
@@ -51,7 +50,7 @@ export const mockMovies: Movie[] = [
     id: '4',
     title: 'The Matrix',
     description: 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.',
-    posterUrl: 'https://images.unsplash.com/photo-1470813740244-df37b8c1edcb',
+    posterUrl: 'https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg',
     backdropUrl: 'https://wallpaperaccess.com/full/1631875.jpg',
     rating: 8.7,
     releaseYear: 1999,
@@ -66,8 +65,8 @@ export const mockMovies: Movie[] = [
     id: '5',
     title: 'Pulp Fiction',
     description: 'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.',
-    posterUrl: 'https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg',
-    backdropUrl: 'https://wallpaperaccess.com/full/1900293.jpg',
+    posterUrl: 'https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg',
+    backdropUrl: 'https://wallpapercave.com/wp/wp1900293.jpg',
     rating: 8.9,
     releaseYear: 1994,
     genres: ['Crime', 'Drama'],
@@ -81,7 +80,7 @@ export const mockMovies: Movie[] = [
     id: '6',
     title: 'The Avengers',
     description: 'Earth\'s mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.',
-    posterUrl: 'https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg',
+    posterUrl: 'https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg',
     backdropUrl: 'https://images5.alphacoders.com/431/431709.jpg',
     rating: 8.0,
     releaseYear: 2012,
@@ -337,7 +336,7 @@ export const mockMovies: Movie[] = [
     id: '23',
     title: 'Parasite',
     description: 'Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.',
-    posterUrl: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5',
+    posterUrl: 'https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg',
     backdropUrl: 'https://wallpapercave.com/wp/wp5294886.jpg',
     rating: 8.5,
     releaseYear: 2019,
@@ -382,7 +381,7 @@ export const mockMovies: Movie[] = [
     id: '26',
     title: 'Inglourious Basterds',
     description: 'In Nazi-occupied France during World War II, a plan to assassinate Nazi leaders by a group of Jewish U.S. soldiers coincides with a theatre owner\'s vengeful plans for the same.',
-    posterUrl: 'https://m.media-amazon.com/images/M/MV5BOTJiNDEzOWYtMTVjOC00ZjlmLWE0NGMtZmE1OWVmZDQ2OWJhXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_.jpg',
+    posterUrl: 'https://m.media-amazon.com/images/M/MV5BOTJiNDEzOWYtMTVjOC00ZjlmLWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_.jpg',
     backdropUrl: 'https://wallpapercave.com/wp/wp3493605.jpg',
     rating: 8.3,
     releaseYear: 2009,

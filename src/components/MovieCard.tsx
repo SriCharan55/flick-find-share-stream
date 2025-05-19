@@ -39,32 +39,34 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie, className }) => {
   return (
     <div className={cn('movie-card group h-full flex flex-col', className)}>
       <Link to={`/movie/${movie.id}`} className="block relative flex-grow">
-        <img
-          src={movie.posterUrl}
-          alt={movie.title}
-          className="movie-card-image rounded-t-lg w-full h-full object-cover"
-          loading="lazy"
-          onError={handleImageError}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-          <div className="text-white">
-            <h3 className="font-semibold text-lg truncate">{movie.title}</h3>
-            <div className="flex items-center mt-1">
-              <Star className="h-4 w-4 fill-rating stroke-rating mr-1" />
-              <span className="text-sm">{movie.rating.toFixed(1)}</span>
-              <span className="mx-2 text-xs">•</span>
-              <span className="text-sm">{movie.releaseYear}</span>
-            </div>
-            <div className="mt-2">
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className="bg-background/20 hover:bg-background/40 border-white/20"
-                onClick={handleAddToWatchlist}
-              >
-                <Heart className="h-4 w-4 mr-2" />
-                Watchlist
-              </Button>
+        <div className="aspect-[2/3] w-full h-full relative overflow-hidden rounded-t-lg">
+          <img
+            src={movie.posterUrl}
+            alt={movie.title}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+            onError={handleImageError}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+            <div className="text-white">
+              <h3 className="font-semibold text-lg truncate">{movie.title}</h3>
+              <div className="flex items-center mt-1">
+                <Star className="h-4 w-4 fill-rating stroke-rating mr-1" />
+                <span className="text-sm">{movie.rating.toFixed(1)}</span>
+                <span className="mx-2 text-xs">•</span>
+                <span className="text-sm">{movie.releaseYear}</span>
+              </div>
+              <div className="mt-2">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="bg-background/20 hover:bg-background/40 border-white/20"
+                  onClick={handleAddToWatchlist}
+                >
+                  <Heart className="h-4 w-4 mr-2" />
+                  Watchlist
+                </Button>
+              </div>
             </div>
           </div>
         </div>

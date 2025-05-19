@@ -1,8 +1,10 @@
 
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { Movie } from '@/types';
 import { MovieCard } from './MovieCard';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import useEmblaCarousel from 'embla-carousel-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface FeaturedSliderProps {
   title: string;
@@ -10,6 +12,32 @@ interface FeaturedSliderProps {
 }
 
 export const FeaturedSlider: React.FC<FeaturedSliderProps> = ({ title, movies }) => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: 'start',
+    loop: true,
+    skipSnaps: false,
+    dragFree: true,
+  });
+
+  // Auto-scroll function
+  const autoScroll = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  // Set up auto-scrolling
+  useEffect(() => {
+    if (!emblaApi) return;
+    
+    const intervalId = setInterval(autoScroll, 5000);
+    
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [emblaApi, autoScroll]);
+
+  // Make sure we have enough movies to fill the carousel
+  const displayMovies = movies.length >= 6 ? movies : [...movies, ...movies].slice(0, 8);
+
   return (
     <section className="py-8 px-4 sm:py-12">
       <div className="container mx-auto">
@@ -17,24 +45,38 @@ export const FeaturedSlider: React.FC<FeaturedSliderProps> = ({ title, movies })
           <h2 className="text-2xl font-bold sm:text-3xl">{title}</h2>
         </div>
         
-        <Carousel className="w-full">
-          <CarouselContent className="-ml-2 md:-ml-4">
-            {movies.map(movie => (
-              <CarouselItem 
-                key={movie.id} 
-                className="pl-2 md:pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6"
-              >
-                <div className="h-full">
-                  <MovieCard movie={movie} className="h-full" />
+        <div className="relative">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex">
+              {displayMovies.map((movie, index) => (
+                <div 
+                  key={`${movie.id}-${index}`} 
+                  className="flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] md:flex-[0_0_33.33%] lg:flex-[0_0_25%] xl:flex-[0_0_20%] pl-4 first:pl-0"
+                >
+                  <div className="pr-4">
+                    <MovieCard movie={movie} className="h-full" />
+                  </div>
                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="flex justify-end gap-2 mt-4">
-            <CarouselPrevious className="relative inset-0 translate-y-0 left-0" />
-            <CarouselNext className="relative inset-0 translate-y-0 right-0" />
+              ))}
+            </div>
           </div>
-        </Carousel>
+          
+          <button 
+            className="absolute top-1/2 -left-4 -translate-y-1/2 bg-background/80 hover:bg-background rounded-full p-2 z-10"
+            onClick={() => emblaApi?.scrollPrev()}
+          >
+            <ChevronLeft className="h-6 w-6" />
+            <span className="sr-only">Previous</span>
+          </button>
+          
+          <button 
+            className="absolute top-1/2 -right-4 -translate-y-1/2 bg-background/80 hover:bg-background rounded-full p-2 z-10"
+            onClick={() => emblaApi?.scrollNext()}
+          >
+            <ChevronRight className="h-6 w-6" />
+            <span className="sr-only">Next</span>
+          </button>
+        </div>
       </div>
     </section>
   );

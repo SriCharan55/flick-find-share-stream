@@ -35,14 +35,24 @@ const Home = () => {
     setFilteredMovies(filtered);
   };
   
-  // Get exactly 5 unique movies per category
-  const getUniqueMoviesByGenre = (genre: string, count: number = 5): Movie[] => {
+  // Get at least 6 unique movies per category to avoid empty space
+  const getUniqueMoviesByGenre = (genre: string): Movie[] => {
     // Get movies with the specified genre, sorted by rating
-    const genreMovies = filteredMovies
+    let genreMovies = filteredMovies
       .filter(movie => movie.genres.includes(genre))
       .sort((a, b) => b.rating - a.rating);
+    
+    // If we don't have enough movies for this genre, add some from all movies
+    if (genreMovies.length < 6) {
+      const otherMovies = movies
+        .filter(movie => !genreMovies.some(gm => gm.id === movie.id))
+        .sort((a, b) => b.rating - a.rating)
+        .slice(0, 6 - genreMovies.length);
+      
+      genreMovies = [...genreMovies, ...otherMovies];
+    }
 
-    return genreMovies.slice(0, count);
+    return genreMovies.slice(0, 8); // Return at least 6, up to 8 movies
   };
   
   const actionMovies = getUniqueMoviesByGenre('Action');
@@ -82,14 +92,14 @@ const Home = () => {
       <FeaturedSlider title="Featured Movies" movies={featuredMovies} />
       
       <div className="space-y-8">
-        {actionMovies.length > 0 && <MovieGrid title="Action Movies" movies={actionMovies} />}
-        {comedyMovies.length > 0 && <MovieGrid title="Comedy Movies" movies={comedyMovies} />}
-        {sciFiMovies.length > 0 && <MovieGrid title="Science Fiction" movies={sciFiMovies} />}
-        {adventureMovies.length > 0 && <MovieGrid title="Adventure Movies" movies={adventureMovies} />}
-        {dramaMovies.length > 0 && <MovieGrid title="Drama" movies={dramaMovies} />}
-        {thrillerMovies.length > 0 && <MovieGrid title="Thriller Movies" movies={thrillerMovies} />}
-        {crimeMovies.length > 0 && <MovieGrid title="Crime Movies" movies={crimeMovies} />}
-        {animationMovies.length > 0 && <MovieGrid title="Animation Movies" movies={animationMovies} />}
+        {actionMovies.length > 5 && <FeaturedSlider title="Action Movies" movies={actionMovies} />}
+        {comedyMovies.length > 5 && <FeaturedSlider title="Comedy Movies" movies={comedyMovies} />}
+        {dramaMovies.length > 5 && <FeaturedSlider title="Drama" movies={dramaMovies} />}
+        {adventureMovies.length > 5 && <FeaturedSlider title="Adventure Movies" movies={adventureMovies} />}
+        {sciFiMovies.length > 5 && <FeaturedSlider title="Science Fiction" movies={sciFiMovies} />}
+        {thrillerMovies.length > 5 && <FeaturedSlider title="Thriller Movies" movies={thrillerMovies} />}
+        {crimeMovies.length > 5 && <FeaturedSlider title="Crime Movies" movies={crimeMovies} />}
+        {animationMovies.length > 5 && <FeaturedSlider title="Animation Movies" movies={animationMovies} />}
       </div>
     </Layout>
   );
