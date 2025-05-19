@@ -2,7 +2,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { Movie } from '@/types';
 import { MovieCard } from './MovieCard';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 

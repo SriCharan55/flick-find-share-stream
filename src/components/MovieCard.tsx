@@ -33,7 +33,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie, className }) => {
 
   // Add error handling for image loading
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    e.currentTarget.src = 'https://via.placeholder.com/300x450?text=Movie+Poster';
+    e.currentTarget.src = 'https://images.unsplash.com/photo-1500673922987-e212871fec22?auto=format&fit=crop&w=300&q=80';
   };
 
   return (

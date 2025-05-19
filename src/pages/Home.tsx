@@ -55,6 +55,7 @@ const Home = () => {
     return genreMovies.slice(0, 8); // Return at least 6, up to 8 movies
   };
   
+  // Get movies for each genre
   const actionMovies = getUniqueMoviesByGenre('Action');
   const comedyMovies = getUniqueMoviesByGenre('Comedy');
   const sciFiMovies = getUniqueMoviesByGenre('Sci-Fi');
