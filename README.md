@@ -1,73 +1,94 @@
-# Welcome to your Lovable project
 
-## Project info
 
-**URL**: https://lovable.dev/projects/ae3c58ce-128c-4a94-86d2-12138890b425
+# 🎬 Movie Discovery App
 
-## How can I edit this code?
+An AI-powered **Movie Discovery Platform** built with React.js, Tailwind CSS, Supabase, and shadcn/ui.
+This app allows users to explore the **most popular movies across the years**, filter by their preferences, and enjoy a personalized movie-watching experience.
 
-There are several ways of editing your application.
+---
 
-**Use Lovable**
+## The Problem
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ae3c58ce-128c-4a94-86d2-12138890b425) and start prompting.
+Many users want to **explore popular movies** that have been most viewed or talked about across the years. However, most streaming or online platforms face these problems:
 
-Changes made via Lovable will be committed automatically to this repo.
+* 🎥 **Constant Catalog Updates** – Platforms update their libraries every month, making it hard to find older popular movies.
+* 🔍 **Scattered Resources** – Users search across blogs, YouTube, and sites to gather info.
+* ⏳ **Time-Consuming** – Switching between apps (trailers, reviews, streaming availability).
+* 🎯 **Lack of Personalization** – No easy filtering by year, genre, or rating.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## ✅ Our Solution – Movie Discovery App
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+With **Movie App**, users can discover, explore, and manage movies in one place:
 
-Follow these steps:
+* 🎬 **Top 50 Popular Movies** curated across the years.
+* 🎭 **Dynamic Genre Rows** on the homepage with sliding effect.
+* 🎥 **Detailed Movie Pages** with: Overview, Cast & Crew, Reviews, Synopsis, YouTube Trailer.
+* 📊 **Filter & Search** by year, genre, and rating (includes voice search).
+* ⭐ **Movie Grid View** with name, year, and rating.
+* 📌 **Watchlist** for logged-in users to save movies.
+* 🔗 **Share with Friends** option.
+* 📺 **Streaming Options** linked to platforms directly.
+* 🌙 **Dark Mode** for better viewing.
+* 🎥 **Recommendations** – “You Might Also Like” movies below each detail page.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 🔄 App Workflow
 
-# Step 3: Install the necessary dependencies.
-npm i
+1. **Home Page** → Shows popular movies in sliding genre rows.
+2. **Search & Filter** → Find movies by title, genre, year, or rating (voice input available).
+3. **Movie Grid & Details** → View ratings, year, synopsis, cast, reviews, and trailer.
+4. **User Login** → Create/manage a watchlist and share movies.
+5. **Dashboard** → Access saved movies and navigate easily.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+---
 
-**Edit a file directly in GitHub**
+## 🛠️ Tech Stack
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+* **Frontend:** React.js, JavaScript, Tailwind CSS, Custom CSS, shadcn/ui
+* **Backend & Database:** Supabase
+* **Features:** Voice Search, Dark Theme, Watchlist, Sharing
+* **Deployment:** Vercel
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 🚀 Installation & Setup
 
-## What technologies are used for this project?
+Follow these steps to run the project locally:
 
-This project is built with:
+1. **Clone the Repository**
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+   ```bash
+   git clone https://github.com/SriCharan55/flick-find-share-stream.git
+   cd movie-app
+   ```
 
-## How can I deploy this project?
+2. **Install Dependencies**
 
-Simply open [Lovable](https://lovable.dev/projects/ae3c58ce-128c-4a94-86d2-12138890b425) and click on Share -> Publish.
+   ```bash
+   npm install
+   ```
 
-## Can I connect a custom domain to my Lovable project?
+3. **Set Environment Variables** (create a `.env` file in the root folder)
 
-Yes, you can!
+   ```env
+   REACT_APP_SUPABASE_URL=your_supabase_url
+   REACT_APP_SUPABASE_KEY=your_supabase_key
+   ```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+4. **Run the Development Server**
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+   ```bash
+   npm start
+   ```
+
+   Open 👉 [http://localhost:3000] in your browser.
+
+5. **Build for Production**
+
+   ```bash
+   npm run build
+   ```
+
