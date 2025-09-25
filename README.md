@@ -91,6 +91,6 @@ Follow these steps to run the project locally:
    ```bash
    npm run build
    ```
-**Deployment** : https://flick-find-share-stream.vercel.app/
+   **Deployment** : https://flick-find-share-stream.vercel.app/
    
 
